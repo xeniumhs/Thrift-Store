@@ -1,0 +1,22 @@
+# Node.js
+node_modules/
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+
+# Dependency directories
+bower_components/
+
+# Test coverage
+coverage/
+
+# VS Code settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
