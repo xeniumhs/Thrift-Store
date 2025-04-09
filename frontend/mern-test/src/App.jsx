@@ -13,7 +13,7 @@ function App() {
         {/* yesari nai name rakham aile afno branch ma
         then i will check merge! */}
         <p>Xenium Suwal</p>   
-        <p>malika</p>   
+        <p>Malika Budhathoki</p>   
 
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
