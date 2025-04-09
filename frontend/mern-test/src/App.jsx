@@ -9,6 +9,11 @@ function App() {
   return (
     <>
       <div>
+        <h2>TEAMM MEMBERS</h2>
+        {/* yesari nai name rakham aile afno branch ma
+        then i will check merge! */}
+        <p>Xenium Suwal</p>   
+
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
