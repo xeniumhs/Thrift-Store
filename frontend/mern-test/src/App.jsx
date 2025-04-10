@@ -14,7 +14,8 @@ function App() {
         then i will check merge! */}
         <p>Xenium Suwal</p>   
         <p>Rushal Manandhar</p>
-        <p>Malika Budhathoki</p>   
+        <p>Malika Budhathoki</p> 
+        <p>Kriti Koju</p>  
 
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
