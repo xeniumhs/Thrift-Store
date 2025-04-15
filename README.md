@@ -1,2 +1,2 @@
-# mern_test
-test_project-ii
+# CRUD_mern
+create,delete,update,read using mern
