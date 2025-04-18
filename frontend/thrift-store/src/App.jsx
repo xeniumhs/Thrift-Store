@@ -1,46 +1,30 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import Navbar from "./components/Base/Navbar";
+import Footer from "./components/Base/Footer";
+import Home from "./components/Home";
+import { BrowserRouter,Route, Routes } from "react-router-dom";
+import Login from "./components/login";
+import Register from "./components/register";
+import './bootstrap.min.css';
+import PrivateComponents from "./components/config/PrivateComponents";
 
 function App() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  // Using async/await to fetch data
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("http://localhost:5000"); // Your Express route
-        const data = await response.json();
-        setProducts(data);
-      } catch (err) {
-        console.error("Failed to fetch products:", err);
-      } finally {
-        setLoading(false); // Stop loading after request is done
-      }
-    };
-
-    fetchProducts();
-  }, []); // Empty dependency array ensures it runs only once when the component mounts
-
   return (
-    <div className="App">
-      <h1>🛒 Product List</h1>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {products.map((product) => (
-            <li key={product._id}>
-              <strong>{product.name || "Unnamed Product"}</strong>
-              <br />
-              Price: ${product.price || "N/A"}
-              <br />
-              ID: {product._id}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+    <>
+      <BrowserRouter>
+          <Navbar/>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route element={<PrivateComponents/>}>
+              <Route path="/Features" element={<h1>Features</h1>}/>
+            </Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+          <Footer/>
+      </BrowserRouter>
+    </>
   );
 }
 
