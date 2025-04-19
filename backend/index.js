@@ -1,24 +1,29 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const cors = require("cors");
 const app = express();
 
-const cors = require("cors");
+require("./db/config");
+const User = require("./db/User");
+// const Product = require("./db/Product");
+
+app.use(express.json());
 app.use(cors());
 
-// Connect to MongoDB
-const connectDB = async () => {
-  await mongoose.connect("mongodb://localhost:27017/E-comm");
-};
+app.post("/register",async (req,resp)=>{  
+  let user = new User(req.body);
+  let result = await user.save();
+  result = result.toObject();
+  delete result.password;
+  resp.send(result);
+})
 
-const productSchema = new mongoose.Schema({}, { strict: false });
-const Product = mongoose.model("product", productSchema);
 
-// Route
-app.get("/", async (req, res) => {
-  await connectDB();
-  const data = await Product.find();
-  res.send(data); // send JSON to browser
-});
+
+// app.get("/", async (req, res) => {
+//   await connectDB();
+//   const data = await Product.find();
+//   res.send(data); // send JSON to browser
+// });
 
 // Start server
 app.listen(5000, () => {
