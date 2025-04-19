@@ -2,7 +2,21 @@ import React,{ useState } from 'react'
 
 export default function Login() {
   // js
-  const [username,setusername] = useState("")
+  const [username,setusername] = useState("");
+  const [email,setemail] = useState("");
+  const [password,setpassword] = useState("");
+
+  const Login = async()=>{
+    let result = await fetch("http://localhost:5000/login",{
+      method:"post",
+      body:JSON.stringify({email,password}),
+      headers:{
+        "Content-Type":"application/json"
+      }
+    })
+    result = await result.json();
+    console.log(result)
+  }
   console.log(username);
   return (
     <div>
@@ -10,10 +24,15 @@ export default function Login() {
             Login here
         </h1>
       <input type="text"
-        value={username}
-        onChange={(e)=>setusername(e.target.value)}
+        value={email}
+        onChange={(e)=>setemail(e.target.value)}
       />
+      <input type="password"
+        value={password}
+        onChange={(e)=>setpassword(e.target.value)}
+      />
+
+      <button onClick={Login}>Login</button>
     </div>
   )
 }
-
