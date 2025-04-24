@@ -6,6 +6,7 @@ const db = require("./db/config");
 
 const userRoute = require("./routes/usersapi");
 const User = require("./db/User");
+const Product = require("./db/Product");
 
 app.use(express.json());
 app.use(cors());
@@ -20,18 +21,22 @@ app.post("/login", async (req, resp) => {
     } else {
       resp.send("user not found");
     }
-  }
-  else{
+  } else {
     resp.send("error");
   }
 });
 
-app.get("/", async (req, res) =>{
-  const product = await product.find();
-} )
+app.get("/", async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.json(products);
+  } catch (error) {
+    res.status(500).send("Error retrieving products");
+  }
+});
 
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
-  console.log("Server running on http://localhost:${port}");
+  console.log(`Server running on http://localhost:${port}`);
 });
