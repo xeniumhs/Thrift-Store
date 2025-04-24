@@ -1,9 +1,21 @@
-import React,{ useState } from 'react'
+import React,{ useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
   const [username,setusername] = useState("");
   const [email,setemail] = useState("");
   const [password,setpassword] = useState("");
+
+  const navigate = useNavigate();
+  
+// this ll avoid double register 
+
+  useEffect(()=>{
+    const user = localStorage.getItem("user");
+    if(user){
+      navigate("/")
+    }
+  })
 
   const Register = async () =>{
     fetch("http://localhost:5000/register",{
@@ -13,6 +25,8 @@ export default function Register() {
             "Content-Type": "application/json",
         }
     });
+    alert("login sucessful")
+    navigate("/login");
   }
 
   return (
