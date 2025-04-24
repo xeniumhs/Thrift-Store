@@ -18,6 +18,7 @@ router.post('/login', async (req, res) => {
     try {
         if(req.body.email && req.body.password) {
             let user = await User.findOne(req.body).select("-password");
+            res.status(200).json(user);
         }
     } catch (error) {
         res.status(400).json({ error: error.message });

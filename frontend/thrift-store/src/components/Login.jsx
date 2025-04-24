@@ -3,7 +3,6 @@ import {useNavigate} from "react-router-dom";
 
 export default function Login() {
   // js
-  const [username,setusername] = useState("");
   const [email,setemail] = useState("");
   const [password,setpassword] = useState("");
 
@@ -32,7 +31,7 @@ export default function Login() {
       navigate("/");
     }
   }
-  console.log(username);
+  
   return (
     <div>
         <h1>
