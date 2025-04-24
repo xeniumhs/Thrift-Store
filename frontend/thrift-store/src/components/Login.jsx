@@ -1,10 +1,20 @@
-import React,{ useState } from 'react'
+import React,{ useState,useEffect } from 'react'
+import {useNavigate} from "react-router-dom";
 
 export default function Login() {
   // js
   const [username,setusername] = useState("");
   const [email,setemail] = useState("");
   const [password,setpassword] = useState("");
+
+  const navigate = useNavigate();
+// this ll avoid double login 
+  useEffect(()=>{
+    const user = localStorage.getItem("user");
+    if(user){
+      navigate("/")
+    }
+  })
 
   const Login = async()=>{
     let result = await fetch("http://localhost:5000/login",{
@@ -15,7 +25,12 @@ export default function Login() {
       }
     })
     result = await result.json();
-    console.log(result)
+    console.log(result);
+
+    if(result.username){
+      localStorage.setItem("user",JSON.stringify(result));
+      navigate("/");
+    }
   }
   console.log(username);
   return (
