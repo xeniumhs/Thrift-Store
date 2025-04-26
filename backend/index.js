@@ -16,16 +16,12 @@ connectDB();
 const bodyparser = require('body-parser');
 const app = express();
 
-const db = require("./db/config");
 
-const userRoute = require("./routes/usersapi");
-const User = require("./db/User");
-const Product = require("./db/Product");
 
 app.use(express.json());
 app.use(cors());
 
-app.use(userRoute); // this will include all the routes from usersapi.js
+app.use(userRoutes); // this will include all the routes from usersapi.js
 
 
 app.get('/',(req,res)=>{
