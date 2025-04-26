@@ -13,36 +13,31 @@ import userRoutes from "./routes/userRoutes.js";
 
 connectDB();
 
+import bodyparser from 'body-parser';
 const app = express();
+
+
 
 app.use(express.json());
 app.use(cors());
 
-app.use('/api/users',userRoutes); // this will include all the routes from userRoutes.js
+app.use(userRoutes); // this will include all the routes from usersapi.js
 
-app.post("/login", async (req, resp) => {
-  if (req.body.email && req.body.password) {
-    let user = await User.findOne(req.body).select("-password");
-    if (user) {
-      resp.send(user);
-    } else {
-      resp.send("user not found");
-    }
-  } else {
-    resp.send("error");
-  }
-});
 
-app.get("/", async (req, res) => {
-  try {
-    const products = await Product.find();
-    res.json(products);
-  } catch (error) {
-    res.status(500).send("Error retrieving products");
-  }
-});
+app.get('/',(req,res)=>{
+  res.send('Hello from the backend server');
+})
 
-const port = process.env.PORT || 5000;
+// app.get("/", async (req, res) => {
+//   try {
+//     const products = await Product.find();
+//     res.json(products);
+//   } catch (error) {
+//     res.status(500).send("Error retrieving products");
+//   }
+// });
+
+const port = process.env.PORT;
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
