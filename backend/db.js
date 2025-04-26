@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-
-const mongoURI = "mongodb://localhost:27017/thrift";
+require('dotenv').config()
+const mongoURI = process.env.DB_URI
 
 const connectDB = async () => {
   try {
