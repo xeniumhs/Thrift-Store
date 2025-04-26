@@ -1,7 +1,8 @@
 // packages
 import express from 'express';
 import cors from 'cors'; // Use import for consistency
-
+import dotenv from 'dotenv';
+dotenv.config();
 
 import User from './models/userModel.js';
 import Product from './models/productModel.js';
@@ -9,6 +10,8 @@ import Product from './models/productModel.js';
 // utils
 import connectDB from "./config/db.js"; 
 import userRoutes from "./routes/userRoutes.js";
+
+connectDB();
 
 const app = express();
 
