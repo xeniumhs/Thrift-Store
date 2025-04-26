@@ -13,7 +13,7 @@ import userRoutes from "./routes/userRoutes.js";
 
 connectDB();
 
-const bodyparser = require('body-parser');
+import bodyparser from 'body-parser';
 const app = express();
 
 

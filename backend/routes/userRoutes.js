@@ -29,12 +29,12 @@ router.route("/").post(createUser);
 //   }
 // });
 //image testing
-const path = require('path');
-const multer = require('multer');
+import path from 'path';
+import multer from 'multer';
 
 //other imports
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
+import jwt from 'jsonwebtoken'
+import bcrypt from 'bcrypt'
 const SECRET_KEY = 'bgtery';
 
 
