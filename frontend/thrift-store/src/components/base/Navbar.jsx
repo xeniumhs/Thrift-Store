@@ -1,4 +1,5 @@
 import React from "react";
+import './Navbar.css';
 
 export default function Navbar() {
   const user = localStorage.getItem("user");
@@ -7,7 +8,7 @@ export default function Navbar() {
     localStorage.clear();
   };
   return (
-    <div>
+    <div className="Navbar">
       <ul>
         <li>
           <a href="/">Home</a>

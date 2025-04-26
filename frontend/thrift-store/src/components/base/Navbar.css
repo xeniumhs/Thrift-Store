@@ -1,0 +1,41 @@
+.Navbar {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center; /* Ensure the entire navbar is centered */
+  align-items: center; /* Vertically centers items */
+}
+
+.Navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center; /* Center items within the ul */
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Limit the maximum width of the navbar */
+  gap: 1.5rem; /* Adds space between the items */
+}
+
+.Navbar li {
+  display: inline-block;
+}
+
+.Navbar li a {
+  text-decoration: none;
+  color: #2a1e1e;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
+}
+
+.Navbar li a:hover {
+  color: #646cff;
+}
