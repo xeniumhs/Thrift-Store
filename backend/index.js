@@ -1,18 +1,30 @@
-const express = require("express");
-const cors = require("cors");
+// packages
+import express from 'express';
+import cors from 'cors'; // Use import for consistency
+import dotenv from 'dotenv';
+dotenv.config();
+
+import User from './models/userModel.js';
+import Product from './models/productModel.js';
+
+// utils
+import connectDB from "./config/db.js"; 
+import userRoutes from "./routes/userRoutes.js";
+
+connectDB();
+
 const bodyparser = require('body-parser');
 const app = express();
-app.use(cors());
-app.use(bodyparser.json());
 
-//server configuration
-require('dotenv').config();
+const db = require("./db/config");
 
-//database connection
-require("./db.js");
-
-//routes
 const userRoute = require("./routes/usersapi");
+const User = require("./db/User");
+const Product = require("./db/Product");
+
+app.use(express.json());
+app.use(cors());
+
 app.use(userRoute); // this will include all the routes from usersapi.js
 
 
