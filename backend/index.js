@@ -1,12 +1,11 @@
-const express = require("express");
-const cors = require("cors");
+import express from 'express';
+import cors from 'cors'; // Use import for consistency
+import db from './db/config.js'; // Assuming db is a default export
+import userRoute from './routes/usersapi.js';
+import User from './db/User.js';
+import Product from './db/Product.js';
+
 const app = express();
-
-const db = require("./db/config");
-
-const userRoute = require("./routes/usersapi");
-const User = require("./db/User");
-const Product = require("./db/Product");
 
 app.use(express.json());
 app.use(cors());

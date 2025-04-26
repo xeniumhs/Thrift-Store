@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from 'mongoose';
 
 const mongoURI = "mongodb://localhost:27017/thrift";
 
@@ -15,4 +15,4 @@ const connectDB = async () => {
 // Call the connectDB function
 connectDB();
 
-module.exports = mongoose;
+export default mongoose;
