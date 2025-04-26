@@ -1,16 +1,21 @@
+// packages
 import express from 'express';
 import cors from 'cors'; // Use import for consistency
-import db from './db/config.js'; // Assuming db is a default export
-import userRoute from './routes/usersapi.js';
-import User from './db/User.js';
-import Product from './db/Product.js';
+
+
+import User from './models/userModel.js';
+import Product from './models/productModel.js';
+
+// utils
+import connectDB from "./config/db.js"; 
+import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-app.use(userRoute); // this will include all the routes from usersapi.js
+app.use('/api/users',userRoutes); // this will include all the routes from userRoutes.js
 
 app.post("/login", async (req, resp) => {
   if (req.body.email && req.body.password) {

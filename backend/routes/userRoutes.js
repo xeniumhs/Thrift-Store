@@ -1,7 +1,10 @@
 import express from "express"; // Import express using ES module syntax
-import User from "../db/User.js"; 
+import { createUser } from '../controllers/userController.js'
+import User from "../models/userModel.js"; 
 
 const router = express.Router();
+
+router.route("/").post(createUser);
 
 router.post("/register", async (req, res) => {
   try {
