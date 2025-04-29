@@ -14,7 +14,7 @@ export default function Navbar() {
           <a href="/">Home</a>
         </li>
         <li>
-          <a href="/function">Upload</a>
+          <a href="/upload">Upload</a>
         </li>
         {user ? (
           <li>

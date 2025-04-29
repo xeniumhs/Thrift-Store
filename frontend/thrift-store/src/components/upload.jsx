@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const upload = () => {
+const Upload = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -13,7 +13,7 @@ const upload = () => {
   const navigate = useNavigate();
 
 
-  const upload = async () => {
+  const Upload = async () => {
     // const formData = new FormData();
     // formData.append("file", image);
     // formData.append("name", name);
@@ -28,7 +28,7 @@ const upload = () => {
     });
     result = await result.json();
     console.log(result);
-    navigate("/");
+    navigate("/upload");
   }
   return (
     <div>
@@ -81,9 +81,9 @@ const upload = () => {
         onChange={(e) => setQuantity(e.target.value)}
       />
 
-      <button onClick={upload}>Upload</button>
+      <button onClick={Upload}>Upload</button>
     </div>
   );
 };
 
-export default upload;
+export default Upload;
