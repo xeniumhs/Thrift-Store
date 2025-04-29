@@ -12,7 +12,6 @@ const Upload = () => {
 
   const navigate = useNavigate();
 
-
   const Upload = async () => {
     // const formData = new FormData();
     // formData.append("file", image);
@@ -29,13 +28,13 @@ const Upload = () => {
     result = await result.json();
     console.log(result);
     navigate("/upload");
-  }
+  };
   return (
     <div>
-      <h1>Uplaod</h1>
+      <h1>Upload</h1>
       <input
         type="file"
-        name="file" 
+        name="file"
         id="file"
         value={image}
         onChange={(e) => setImage(e.target.value)}
