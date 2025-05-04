@@ -1,2 +1,4 @@
-# CRUD_mern
-create,delete,update,read using mern
+# Thrift Store
+Working on this project, thrift store using mern.
+
+work on progress...
