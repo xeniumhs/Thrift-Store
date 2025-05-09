@@ -37,6 +37,11 @@ app.get('/',(req,res)=>{
 //   }
 // });
 
+app.get("/api/users", async (req, res) => {
+  const users = await User.find();
+  res.json(users);
+});
+
 const port = process.env.PORT;
 
 app.listen(port, () => {
