@@ -18,7 +18,7 @@ export default function Register() {
   })
 
   const Register = async () =>{
-    fetch("http://localhost:5000/register",{
+    fetch("http://localhost:5000/api/users/register",{
         method:"post",
         body:JSON.stringify({username,email,password}),
         headers:{

@@ -21,7 +21,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use(userRoutes); // this will include all the routes from usersapi.js
+app.use("/api/users",userRoutes); // this will include all the routes from usersapi.js
 
 
 app.get('/',(req,res)=>{

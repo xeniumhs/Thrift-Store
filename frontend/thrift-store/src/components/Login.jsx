@@ -16,7 +16,7 @@ export default function Login() {
   })
 
   const Login = async()=>{
-    let result = await fetch("http://localhost:5000/login",{
+    let result = await fetch("http://localhost:5000/api/users/login",{
       method:"post",
       body:JSON.stringify({email,password}),
       headers:{
@@ -26,10 +26,13 @@ export default function Login() {
     result = await result.json();
     console.log(result);
 
-    if(result.username){
-      localStorage.setItem("user",JSON.stringify(result));
+    if (result.user && result.user.username) {
+      localStorage.setItem("user", JSON.stringify(result.user));
       navigate("/");
+    } else {
+      alert("Login failed");
     }
+
   }
   
   return (

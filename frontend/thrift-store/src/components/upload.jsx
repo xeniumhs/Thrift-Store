@@ -21,7 +21,7 @@ const Upload = () => {
     // formData.append("category", category);
     // formData.append("quantity", quantity);
 
-    let result = await fetch("http://localhost:5000/upload", {
+    let result = await fetch("http://localhost:5000/api/users/upload", {
       method: "post",
       body: formData,
     });

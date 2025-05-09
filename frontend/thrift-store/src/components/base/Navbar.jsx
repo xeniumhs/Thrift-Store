@@ -1,31 +1,51 @@
-import React from "react";
-import './Navbar.css';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./Navbar.css"; // Ensure the path is correct
 
 export default function Navbar() {
-  const user = localStorage.getItem("user");
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
+  // Check for user in localStorage on initial render and when component updates
+  useEffect(() => {
+    const savedUser = localStorage.getItem("user");
+    setUser(savedUser ? JSON.parse(savedUser) : null);
+  }); // Removed dependency array to run on every render
+
+  // Logout function
   const logout = () => {
-    localStorage.clear();
+    localStorage.removeItem("user");
+    setUser(null);
+    navigate("/login");
   };
+
   return (
     <div className="Navbar">
       <ul>
         <li>
-          <a href="/">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="/upload">Upload</a>
+          <Link to="/upload">Upload</Link>
         </li>
         {user ? (
-          <li>
-            <a onClick={logout} href="/login">Logout</a>
-            <a href="/profile">profile</a>
-          </li>
+          <>
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
+            <li>
+              <button onClick={logout}>Logout</button>
+            </li>
+          </>
         ) : (
-          <li>
-            <a href="/login">Login</a>
-            <a href="/register">Register</a>
-          </li>
+          <>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/register">Register</Link>
+            </li>
+          </>
         )}
       </ul>
     </div>
