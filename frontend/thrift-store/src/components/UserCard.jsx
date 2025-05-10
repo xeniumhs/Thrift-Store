@@ -8,7 +8,21 @@ const UserCard = ({
     email: "user@example.com",
     avatar: "https://i.pravatar.cc/150?img=3",
   },
+  onDelete = () => {},
 }) => {
+  const handleDelete = async () => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete ${user.username}?`
+    );
+    if (confirmDelete) {
+      try {
+        await onDelete(user.id); // Trigger delete from parent component
+        alert(`${user.username} has been deleted`);
+      } catch (error) {
+        alert("Error deleting user: " + error.message);
+      }
+    }
+  };
   return (
     <div className="user-card-wrapper">
       <div className="user-card">
@@ -31,7 +45,7 @@ const UserCard = ({
           <button className="action-btn" title="Edit">
             <FiEdit />
           </button>
-          <button className="action-btn" title="Delete">
+          <button className="action-btn" title="Delete" onClick={handleDelete}>
             <FiTrash2 />
           </button>
         </div>

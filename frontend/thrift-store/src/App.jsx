@@ -11,7 +11,7 @@ import Register from "./components/Register";
 import PrivateComponents from "./components/PrivateComponents";
 import Upload from "./components/Upload";
 import UserList from "./components/UserList"; // add this at top with your other imports
-
+import ProductList from "./components/ProductList";
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
             <Route element={<PrivateComponents />}>
               <Route path="/upload" element={<Upload />} />
               <Route path="/admin/usercard" element={<UserList />} />
+              <Route path="/admin/productcard" element={<ProductList />} />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

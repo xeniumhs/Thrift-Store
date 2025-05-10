@@ -4,7 +4,7 @@ import path from "path";
 import {
   registerUser,
   loginUser,
-  uploadFile,
+  uploadFile, deleteUser
 } from "../controllers/userController.js";
 
 const router = express.Router();
@@ -28,5 +28,6 @@ const upload = multer({
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.post("/upload", upload.single("file"), uploadFile);
+router.delete("/users/:id", deleteUser);
 
 export default router;

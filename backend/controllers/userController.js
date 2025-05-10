@@ -77,7 +77,24 @@ const uploadFile = (req, res) => {
   res.status(200).json({ filePath: req.file.path });
 };
 
+const deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params; // assuming the user ID is passed in the request parameters
+    const user = await User.findById(id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    await User.findByIdAndDelete(id); // delete the user
+    res.status(200).json({ message: "User deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 // export { createUser };
 export { registerUser };
 export { loginUser };
 export { uploadFile };
+export { deleteUser };
