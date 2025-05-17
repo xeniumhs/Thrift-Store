@@ -8,6 +8,7 @@ const productSchema = mongoose.Schema(
     // category: String,
     // image: String,
     // quantity: Number,
+    _id: { type: String, required: true },
     name: { type: String, required: true },
     price: { type: Number, required: true },
     description: String,
@@ -33,6 +34,6 @@ const productSchema = mongoose.Schema(
   }
 );
 
-const Product = mongoose.model("Product", productSchema);
+const Product = mongoose.model("Product", productSchema,'products');
 
 export default Product;

@@ -44,9 +44,8 @@ const ProductList = () => {
     fetchProducts();
   }, []);
 
-
   const handleDelete = async (productId) => {
-    console.log("Attempting to delete product with ID:", productId); // Add this log
+    console.log("Attempting to delete product with ID:", productId);
     try {
       const response = await fetch(
         `http://localhost:5000/api/products/${productId}`,
@@ -55,21 +54,25 @@ const ProductList = () => {
         }
       );
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(
-          `Delete failed with ${response.status}: ${
-            errorText || "No error message"
-          }`
+      if (response.status === 204) {
+        console.log(`Product ${productId} deleted successfully`);
+        // Update the products state by filtering out the deleted product
+        setProducts((prevProducts) =>
+          prevProducts.filter((p) => p.id !== productId)
         );
+      } else {
+        // Parse error response and show it
+        const errorData = await response.json();
+        console.error("Delete failed:", errorData);
+        alert(`Delete failed: ${errorData.error || "Unknown error"}`);
       }
-
-      setProducts(products.filter((product) => product._id !== productId));
-    } catch (err) {
-      setError(err.message);
-      console.error("Delete error:", err);
+    } catch (error) {
+      console.error("Delete request error:", error);
+      alert("An error occurred while deleting the product.");
     }
   };
+  
+  
 
 
   const handleEdit = (product) => {
@@ -85,9 +88,9 @@ const ProductList = () => {
     <div className="products-container">
       {products.map((product) => (
         <ProductCard
-          key={product._id}
+          key={product.id}
           product={product}
-          onDelete={handleDelete}
+          onDelete={(id) => handleDelete(id)}
           onEdit={handleEdit}
         />
       ))}
