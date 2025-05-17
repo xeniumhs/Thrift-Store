@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Navbar.css"; // Ensure the path is correct
+import "./Navbar.css";
 
 export default function Navbar() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  // Check for user in localStorage on initial render and when component updates
+  // Load user from localStorage
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
     setUser(savedUser ? JSON.parse(savedUser) : null);
-  }); // Removed dependency array to run on every render
+  }, []); // ✅ Use empty dependency array to avoid infinite re-renders
 
   // Logout function
   const logout = () => {
@@ -35,7 +35,9 @@ export default function Navbar() {
             </li>
             <li>
               <button onClick={logout}>Logout</button>
-            </li>
+        </li>
+       
+             <li>👤 {user.username}</li> 
           </>
         ) : (
           <>

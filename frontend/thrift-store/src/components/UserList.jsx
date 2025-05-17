@@ -1,40 +1,46 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import UserCard from "./UserCard"; // adjust the path if needed
-
-const handleDelete = async (userId) => {
-  try {
-    const response = await fetch(`/api/users/${userId}`, {
-      method: "DELETE", // Make sure your backend is handling DELETE requests
-    });
-    if (response.ok) {
-      console.log(`User with ID ${userId} deleted successfully`);
-      // Handle successful deletion (e.g., update state or UI)
-    } else {
-      throw new Error("Failed to delete user");
-    }
-  } catch (error) {
-    console.error("Error deleting user:", error.message);
-  }
-};
-
+import UserCard from "./UserCard";
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    // Replace with your actual backend endpoint
     axios
       .get("http://localhost:5000/api/users")
       .then((res) => setUsers(res.data))
       .catch((err) => console.error("Error fetching users:", err));
   }, []);
 
+  const handleDelete = async (userId) => {
+    console.log("Frontend requesting deletion for:", userId); // ✅ debug log
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/users/${userId}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      const result = await response.json();
+      console.log("Backend response:", result);
+
+      if (response.ok) {
+        setUsers((prevUsers) =>
+          prevUsers.filter((user) => user._id !== userId)
+        );
+      } else {
+        alert("Deletion failed: " + result.message);
+      }
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
+  
   return (
     <div className="user-list">
       {users.map((user) => (
-        <UserCard key={user._id} user={user}
-        onDelete={handleDelete}/>
+        <UserCard key={user._id} user={user} onDelete={handleDelete} />
       ))}
     </div>
   );

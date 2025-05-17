@@ -92,7 +92,7 @@ const ProductCard = ({ product, onDelete, onEdit }) => {
           <button
             className="action-btn"
             title="Delete Product"
-            onClick={() => onDelete(product._id)}
+            onClick={() => onDelete(product.id)}
           >
             <FiTrash2 />
           </button>
