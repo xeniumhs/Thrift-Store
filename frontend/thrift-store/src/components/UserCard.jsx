@@ -16,7 +16,7 @@ const UserCard = ({
     );
     if (confirmDelete) {
       try {
-        await onDelete(user.id); // Trigger delete from parent component
+        onDelete(user._id); // Trigger delete from parent component
         alert(`${user.username} has been deleted`);
       } catch (error) {
         alert("Error deleting user: " + error.message);

@@ -28,6 +28,6 @@ const upload = multer({
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.post("/upload", upload.single("file"), uploadFile);
-router.delete("/users/:id", deleteUser);
+router.delete("/:id", deleteUser);
 
 export default router;
