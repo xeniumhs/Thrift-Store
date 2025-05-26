@@ -6,13 +6,11 @@ export default function Navbar() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  // Check for user in localStorage on initial render and when component updates
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
     setUser(savedUser ? JSON.parse(savedUser) : null);
-  }); // Removed dependency array to run on every render
+  }, []);
 
-  // Logout function
   const logout = () => {
     localStorage.removeItem("user");
     setUser(null);
@@ -28,6 +26,10 @@ export default function Navbar() {
         <li>
           <Link to="/upload">Upload</Link>
         </li>
+        <li>
+          <Link to="/vendor/register">Become a Vendor</Link>
+        </li>
+
         {user ? (
           <>
             <li>
