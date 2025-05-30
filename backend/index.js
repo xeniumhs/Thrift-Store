@@ -1,8 +1,9 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 // packages
 import express from 'express';
 import cors from 'cors'; // Use import for consistency
-import dotenv from 'dotenv';
-dotenv.config();
 
 import User from './models/userModel.js';
 import Product from './models/productModel.js';
@@ -37,7 +38,7 @@ app.get('/',(req,res)=>{
 //   }
 // });
 
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
