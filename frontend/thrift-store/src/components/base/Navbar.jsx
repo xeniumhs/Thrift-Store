@@ -12,7 +12,6 @@ export default function Navbar() {
     setUser(savedUser ? JSON.parse(savedUser) : null);
   }, []); // ✅ Use empty dependency array to avoid infinite re-renders
 
-  // Logout function
   const logout = () => {
     localStorage.removeItem("user");
     setUser(null);
@@ -28,6 +27,10 @@ export default function Navbar() {
         <li>
           <Link to="/upload">Upload</Link>
         </li>
+        <li>
+          <Link to="/vendor/register">Become a Vendor</Link>
+        </li>
+
         {user ? (
           <>
             <li>
