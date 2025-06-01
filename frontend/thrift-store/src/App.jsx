@@ -9,10 +9,10 @@ import Navbar from "./components/base/Navbar";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import PrivateComponents from "./components/PrivateComponents";
-import Upload from "./components/Upload";
+import Upload from "./components/Product/Upload";
 import UserList from "./components/UserList";
-import ProductList from "./components/ProductList";
-import VendorRegister from "./components/VendorRegister";
+import ProductList from "./components/Product/ProductList";
+import VendorRegister from "./components/Vendor/VendorRegister";
 
 function App() {
   return (

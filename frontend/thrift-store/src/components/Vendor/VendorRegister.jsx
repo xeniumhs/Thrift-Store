@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/VendorRegister.css"; // ✅ CSS path
+import "../../styles/VendorRegister.css"; // ✅ CSS path
 
 export default function VendorRegister() {
   const [formData, setFormData] = useState({
