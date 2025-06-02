@@ -1,23 +1,28 @@
-import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // CSS
 import "./App.css";
 
 // Components
-import Navbar from "./components/base/Navbar";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Navbar from "./pages/Auth/base/Navbar";
+import Login from "./pages/Auth/Login";
+import Register from "./pages/Auth/Register";
 import PrivateComponents from "./components/PrivateComponents";
 import Upload from "./components/Upload";
 import UserList from "./components/UserList";
 import ProductList from "./components/ProductList";
 import VendorRegister from "./components/VendorRegister";
+import Home from "./pages/User/Home";
+
+// for notifications toast
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <Router>
       <Navbar />
+      <Home/>
       <div className="app-container">
         <Routes>
           {/* Public Routes */}
@@ -33,6 +38,7 @@ function App() {
           </Route>
         </Routes>
       </div>
+      <ToastContainer />
     </Router>
   );
 }

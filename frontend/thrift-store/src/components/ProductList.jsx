@@ -71,9 +71,6 @@ const ProductList = () => {
       alert("An error occurred while deleting the product.");
     }
   };
-  
-  
-
 
   const handleEdit = (product) => {
     // Implement your edit logic here
