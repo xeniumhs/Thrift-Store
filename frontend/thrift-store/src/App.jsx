@@ -6,6 +6,7 @@ import "./App.css";
 
 // Components
 import Navbar from "./components/base/Navbar";
+import Footer from "./components/base/Footer";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import PrivateComponents from "./components/PrivateComponents";
@@ -33,6 +34,9 @@ function App() {
           </Route>
         </Routes>
       </div>
+
+      {/* ✅ Footer added here */}
+      <Footer />
     </Router>
   );
 }
