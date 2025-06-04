@@ -8,6 +8,8 @@ import "./App.css";
 import Navbar from "./components/base/Navbar";
 import Footer from "./components/base/Footer";
 import Login from "./components/Login";
+import AboutUs from "./components/AboutUs";
+import ContactUs from "./components/ContactUs";
 import Register from "./components/Register";
 import PrivateComponents from "./components/PrivateComponents";
 import Upload from "./components/Product/Upload";
@@ -25,8 +27,10 @@ function App() {
           <Route path="/vendor/register" element={<VendorRegister />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
+          <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/contactus" element={<ContactUs />} />
           {/* Protected Admin Routes */}
+
           <Route element={<PrivateComponents />}>
             <Route path="/upload" element={<Upload />} />
             <Route path="/admin/usercard" element={<UserList />} />

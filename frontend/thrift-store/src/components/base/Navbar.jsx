@@ -39,6 +39,7 @@ export default function Navbar() {
             <li>
               <button onClick={logout}>Logout</button>
         </li>
+
        
              <li>👤 {user.username}</li> 
           </>
@@ -50,8 +51,12 @@ export default function Navbar() {
             <li>
               <Link to="/register">Register</Link>
             </li>
+            
           </>
         )}
+        <li>
+              <Link to="/aboutus">AboutUs</Link>
+            </li>
       </ul>
     </div>
   );
