@@ -72,7 +72,7 @@ export default function Register() {
           onChange={(e) => setpassword(e.target.value)}
         />
         <input
-          type="confirmPassword"
+          type="password"
           placeholder="Re-Enter password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
