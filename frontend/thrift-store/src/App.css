@@ -24,7 +24,7 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
   line-height: 1.5;
   color: var(--text-primary, #e3e3e3);
-  background-color: var(--bg-primary, #242424);
+  /* background-color: var(--bg-primary, #f8f3f3); */
 }
 
 /* Link styling that components can override */

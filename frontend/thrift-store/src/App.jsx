@@ -7,6 +7,7 @@ import "./App.css";
 // Components
 import Navbar from "./components/base/Navbar";
 import Login from "./components/Login";
+import AboutUs from "./components/AboutUs";
 import Register from "./components/Register";
 import PrivateComponents from "./components/PrivateComponents";
 import Upload from "./components/Upload";
@@ -24,7 +25,7 @@ function App() {
           <Route path="/vendor/register" element={<VendorRegister />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
+          <Route path="/aboutus" element={<AboutUs />} />
           {/* Protected Admin Routes */}
           <Route element={<PrivateComponents />}>
             <Route path="/upload" element={<Upload />} />
