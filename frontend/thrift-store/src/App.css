@@ -1,4 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 /* App.css - Global styles that won't interfere with components */
 
 /* Core layout for the app container */
@@ -7,6 +20,9 @@
   flex-direction: column;
   min-height: 100vh;
   min-height: 100dvh; /* Modern viewport units */
+
+  flex: 1;
+  padding: 20px;
 }
 
 /* Safe area padding for mobile devices */
@@ -27,44 +43,4 @@ body {
   /* background-color: var(--bg-primary, #f8f3f3); */
 }
 
-/* Link styling that components can override */
-a {
-  color: var(--link-color, currentColor);
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-
-/* Utility classes for layout (won't conflict with components) */
-.u-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.u-flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Print styles */
-@media print {
-  .no-print {
-    display: none !important;
-  }
-  
-  body {
-    background: none;
-    color: black;
-    font-size: 12pt;
-  }
-  
-  a::after {
-    content: " (" attr(href) ")";
-    font-size: 0.8em;
-    font-weight: normal;
-  }
-}
+/* ... rest of your code ... */

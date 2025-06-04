@@ -6,15 +6,16 @@ import "./App.css";
 
 // Components
 import Navbar from "./components/base/Navbar";
+import Footer from "./components/base/Footer";
 import Login from "./components/Login";
 import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
 import Register from "./components/Register";
 import PrivateComponents from "./components/PrivateComponents";
-import Upload from "./components/Upload";
+import Upload from "./components/Product/Upload";
 import UserList from "./components/UserList";
-import ProductList from "./components/ProductList";
-import VendorRegister from "./components/VendorRegister";
+import ProductList from "./components/Product/ProductList";
+import VendorRegister from "./components/Vendor/VendorRegister";
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
           </Route>
         </Routes>
       </div>
+
+      {/* ✅ Footer added here */}
+      <Footer />
     </Router>
   );
 }
