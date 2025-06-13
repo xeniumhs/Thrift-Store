@@ -6,7 +6,7 @@ import {
   FiShoppingCart,
   FiHeart,
 } from "react-icons/fi";
-import "../styles/ProductCard.css";
+import "../../styles/ProductCard.css";
 
 const ProductCard = ({ product, onDelete, onEdit }) => {
   if (!product)
