@@ -5,7 +5,7 @@ import "./App.css";
 
 // Components
 import Navbar from "./pages/Auth/base/Navbar";
-import Footer from "./components/base/Footer";
+import Footer from "./pages/Auth/base/Footer";
 import Login from "./pages/Auth/Login";
 import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
