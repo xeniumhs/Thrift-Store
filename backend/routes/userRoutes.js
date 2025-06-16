@@ -6,6 +6,7 @@ import {
   loginUser,
   // uploadFile,
   deleteUser,
+  getAllUsers,
 } from "../controllers/userController.js";
 
 const router = express.Router();
@@ -30,5 +31,7 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 // router.post("/upload", upload.single("file"), uploadFile);
 router.delete("/:id", deleteUser);
+router.get("/", getAllUsers); // ✅ This route matches frontend
+
 
 export default router;

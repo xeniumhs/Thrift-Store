@@ -91,4 +91,16 @@ const deleteUser = async (req, res) => {
   }
 };
 
-export { registerUser, loginUser, deleteUser };
+const getAllUsers = asyncHandler(async (req, res) => {
+  try {
+    const users = await User.find().select("-password"); // exclude passwords
+    res.status(200).json(users);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error fetching users", error: error.message });
+  }
+});
+
+
+export { registerUser, loginUser, deleteUser,getAllUsers };

@@ -1,42 +1,29 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+// components/UserList.jsx
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUsers, deleteUser } from "../redux/features/users/userSlice";
 import UserCard from "./UserCard";
 
 const UserList = () => {
-  const [users, setUsers] = useState([]);
+  const dispatch = useDispatch();
+  const { list: users, status, error } = useSelector((state) => state.users);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/users")
-      .then((res) => setUsers(res.data))
-      .catch((err) => console.error("Error fetching users:", err));
-  }, []);
+    dispatch(fetchUsers());
+  }, [dispatch]);
 
-  const handleDelete = async (userId) => {
-    console.log("Frontend requesting deletion for:", userId); // ✅ debug log
-    try {
-      const response = await fetch(
-        `http://localhost:5000/api/users/${userId}`,
-        {
-          method: "DELETE",
-        }
-      );
-
-      const result = await response.json();
-      console.log("Backend response:", result);
-
-      if (response.ok) {
-        setUsers((prevUsers) =>
-          prevUsers.filter((user) => user._id !== userId)
-        );
-      } else {
-        alert("Deletion failed: " + result.message);
-      }
-    } catch (error) {
-      console.error("Error deleting user:", error);
-    }
+  const handleDelete = (userId) => {
+    dispatch(deleteUser(userId))
+      .unwrap()
+      .then(() => console.log("User deleted:", userId))
+      .catch((err) => alert("Failed to delete user: " + err));
   };
-  
+
+  if (status === "loading") return <div>Loading users...</div>;
+  if (status === "failed") return <div>Error: {error}</div>;
+  if (status === "succeeded" && users.length === 0)
+    return <div>No users found.</div>;
+
   return (
     <div className="user-list">
       {users.map((user) => (
