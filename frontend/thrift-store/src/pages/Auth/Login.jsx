@@ -6,11 +6,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { setCredentials } from "../../redux/features/auth/authSlice";
 
 export default function Login() {
-  // js
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
-  const x = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [login, { isLoading }] = useLoginMutation();
@@ -20,7 +19,7 @@ export default function Login() {
   const { search } = useLocation();
   const sp = new URLSearchParams(search);
   const redirect = sp.get("redirect") || "/";
-  // this ll avoid double login
+
   useEffect(() => {
     if (userInfo) {
       navigate(redirect);
@@ -31,7 +30,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await login({ email, password }).unwrap();
-      x(setCredentials(res)); //x is dispatch just to test
+      dispatch(setCredentials(res)); // Set user info in Redux
       toast.success("Login successful");
     } catch (error) {
       toast.error(error?.data?.message || error.message || "Login failed");
@@ -55,20 +54,15 @@ export default function Login() {
             value={password}
             onChange={(e) => setpassword(e.target.value)}
           />
-
           <button disabled={isLoading} type="submit">
-            {isLoading ? "Sigining In... " : "Sign In"}
+            {isLoading ? "Signing In..." : "Sign In"}
           </button>
         </form>
         <div>
-          <div>
-            New to our platform?{" "}
-            <Link
-              to={redirect ? `/register?redirect=${redirect}` : "/register"}
-            >
-              Create an account
-            </Link>
-          </div>
+          New to our platform?{" "}
+          <Link to={redirect ? `/register?redirect=${redirect}` : "/register"}>
+            Create an account
+          </Link>
         </div>
       </section>
     </div>

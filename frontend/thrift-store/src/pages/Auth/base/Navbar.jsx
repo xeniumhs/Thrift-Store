@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
+import { useSelector, useDispatch } from "react-redux";
+import { logout as logoutAction } from "../../../redux/features/auth/authSlice";
 
 export default function Navbar() {
-  const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Load user from localStorage
-  useEffect(() => {
-    const savedUser = localStorage.getItem("user");
-    setUser(savedUser ? JSON.parse(savedUser) : null);
-  }, []); // ✅ Use empty dependency array to avoid infinite re-renders
+  const { userInfo } = useSelector((state) => state.auth); // 👈 Get from Redux
 
   const logout = () => {
-    localStorage.removeItem("user");
-    setUser(null);
+    dispatch(logoutAction()); // Clear from Redux
+    localStorage.removeItem("user"); // Optional: if you stored it
     navigate("/login");
   };
 
@@ -31,17 +29,15 @@ export default function Navbar() {
           <Link to="/vendor/register">Become a Vendor</Link>
         </li>
 
-        {user ? (
+        {userInfo ? (
           <>
             <li>
               <Link to="/profile">Profile</Link>
             </li>
             <li>
               <button onClick={logout}>Logout</button>
-        </li>
-
-       
-             <li>👤 {user.username}</li> 
+            </li>
+            <li>👤 {userInfo.username}</li>
           </>
         ) : (
           <>
@@ -51,12 +47,11 @@ export default function Navbar() {
             <li>
               <Link to="/register">Register</Link>
             </li>
-            
           </>
         )}
         <li>
-              <Link to="/aboutus">AboutUs</Link>
-            </li>
+          <Link to="/aboutus">AboutUs</Link>
+        </li>
       </ul>
     </div>
   );

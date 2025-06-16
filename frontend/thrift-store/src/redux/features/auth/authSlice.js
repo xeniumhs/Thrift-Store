@@ -9,12 +9,15 @@ const authSlice = createSlice({
     name : "rushal",
     initialState,
     reducers : {
-        setCredentials : (state, action)=>{
+        setCredentials: (state, action) => {
             state.userInfo = action.payload;
             localStorage.setItem("userInfo", JSON.stringify(action.payload));
-            const expirationTime = new Date()+ 30 * 24 * 60 *  60 * 1000; // 30 days
-            localStorage.setItem("expirationTime", expirationTime);
-        },
+            
+            // Correct expiration calculation
+            const expirationTime = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000); // 30 days
+            localStorage.setItem("expirationTime", expirationTime.toISOString()); // store as ISO
+          },
+          
 
         logout: (state) => {
             state.userInfo = null;
