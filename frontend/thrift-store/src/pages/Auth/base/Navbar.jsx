@@ -52,6 +52,9 @@ export default function Navbar() {
         <li>
           <Link to="/aboutus">AboutUs</Link>
         </li>
+         <li>
+          <Link to="/contactus">ContactUs</Link>
+        </li>
       </ul>
     </div>
   );
