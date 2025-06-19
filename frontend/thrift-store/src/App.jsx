@@ -24,6 +24,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import OrderList from "./components/Admin/OrderList";
 import AdminRoute from "./components/Admin/AdminRoute";
+import Unauthorized from "./components/Unauthorized";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/vendor/register" element={<VendorRegister />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/unauthorized" element={<Unauthorized />} />
 
           {/* Protected routes */}
           <Route element={<PrivateComponents />}>
