@@ -46,11 +46,10 @@ function App() {
             <Route path="/upload" element={<Upload />} />
 
             <Route path="/admin/productcard" element={<ProductList />} />
-
-            <Route element={<AdminRoute />}>
-              <Route path="/admin/usercard" element={<UserList />} />
-              <Route path="/admin/orderlist" element={<OrderList />} />
-            </Route>
+          </Route>
+          <Route element={<AdminRoute />}>
+            <Route path="/admin/usercard" element={<UserList />} />
+            <Route path="/admin/orderlist" element={<OrderList />} />
           </Route>
         </Routes>
       </div>

@@ -34,6 +34,7 @@ const registerUser = asyncHandler(async (req, res) => {
       username: newUser.username,
       email: newUser.email,
       isAdmin: newUser.isAdmin,
+      isVendor:newUser.isVendor,
     });
   } catch (error) {
     res.status(400);
@@ -60,6 +61,7 @@ const loginUser = asyncHandler(async (req, res) => {
         username: exitingUser.username,
         email: exitingUser.email,
         isAdmin: exitingUser.isAdmin,
+        isVendor:exitingUser.isVendor,
       });
       return;
     }

@@ -4,6 +4,9 @@ import { useSelector } from "react-redux";
 const AdminRoute = () => {
   const { userInfo } = useSelector((state) => state.auth);
 
+  console.log("✅ AdminRoute loaded");
+  console.log("userInfo:", userInfo);
+
   return !userInfo ? (
     <Navigate to="/login" replace />
   ) : !userInfo.isAdmin ? (
