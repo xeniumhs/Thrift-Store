@@ -32,12 +32,12 @@ export default function Navbar() {
         {userInfo ? (
           <>
             <li>
-              <Link to="/profile">Profile</Link>
+              <Link to="/profile">👤 {userInfo.username}</Link>
             </li>
             <li>
               <button onClick={logout}>Logout</button>
             </li>
-            <li>👤 {userInfo.username}</li>
+            
           </>
         ) : (
           <>

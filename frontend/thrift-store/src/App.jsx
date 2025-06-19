@@ -22,6 +22,8 @@ import FAQ from "./components/FAQ";
 // for notifications toast
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import OrderList from "./components/Admin/OrderList";
+import AdminRoute from "./components/Admin/AdminRoute";
 
 function App() {
   return (
@@ -40,8 +42,13 @@ function App() {
           {/* Protected routes */}
           <Route element={<PrivateComponents />}>
             <Route path="/upload" element={<Upload />} />
-            <Route path="/admin/usercard" element={<UserList />} />
+
             <Route path="/admin/productcard" element={<ProductList />} />
+
+            <Route element={<AdminRoute />}>
+              <Route path="/admin/usercard" element={<UserList />} />
+              <Route path="/admin/orderlist" element={<OrderList />} />
+            </Route>
           </Route>
         </Routes>
       </div>
