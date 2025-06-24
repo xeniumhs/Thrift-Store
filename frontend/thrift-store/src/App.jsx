@@ -18,6 +18,7 @@ import ProductList from "./components/Product/ProductList";
 import VendorRegister from "./components/Vendor/VendorRegister";
 import Home from "./pages/User/Home";
 import FAQ from "./components/FAQ";
+import CartPage from "./components/Cart/CartPage";
 
 // for notifications toast
 import { ToastContainer } from "react-toastify";
@@ -36,6 +37,7 @@ function App() {
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/vendor/register" element={<VendorRegister />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/cart" element={<CartPage />} />
 
           {/* Protected routes */}
           <Route element={<PrivateComponents />}>
